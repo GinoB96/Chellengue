@@ -26,19 +26,13 @@ class EmbarcacionController extends Controller
         ->where('ISBN', '=', $dataLibro)->get();
         */
 
-        $totalEmbarcaciones = DB::select('SELECT idEmbarcacion,matricula,E.nombre,T.nombre as tipoEmbarcacion, CONCAT(P.nombre, " ", P.apellido) as propietario,color,largo,ancho,carga_max FROM embarcacion E, tipoEmbarcacion T, propietario P, embarcacionxpropietario EXP WHERE tipoEmbarcacion = T.idTipoEmbarcacion AND EXP.propietario = P.idPropietario AND EXP.embarcacion = E.idEmbarcacion');
+        //$totalEmbarcaciones = DB::select('SELECT idEmbarcacion,matricula,E.nombre,T.nombre as tipoEmbarcacion, CONCAT(P.nombre, " ", P.apellido) as propietario,color,largo,ancho,carga_max FROM embarcacion E, tipoEmbarcacion T, propietario P, embarcacionxpropietario EXP WHERE tipoEmbarcacion = T.idTipoEmbarcacion AND EXP.propietario = P.idPropietario AND EXP.embarcacion = E.idEmbarcacion');
         
-        /*
-        $totalTipoEmb=tipoEmbarcacion::all();
-        $totalPropietario=Propietario::all();
-        $totalPuerto=Puerto::all();
+        //return response()->json($data[, 200][, headers]);
+        $totalEmbarcaciones=Embarcacion::all();
 
-        @foreach($totalEmbarcaciones as $amb)
-            $amb->propietario=
-        @endforeach
-        */
-
-        return view('embarcacion.embarcaciones', compact('totalEmbarcaciones'));
+        //return view('embarcacion.embarcaciones', compact('totalEmbarcaciones'));
+        return response()->json($totalEmbarcaciones);
     }
 
     public function create(){

@@ -16,5 +16,8 @@ use App\Http\Controllers\EmbarcacionController;
 //Route::get('/', [EmbarcacionController::class, 'index']);
 
 Route::controller(EmbarcacionController::class)->group(function(){
-    Route::get('/', 'index');
+    Route::get('/embarcaciones', 'index');
+    Route::post('');
+    Route::put();
+    Route::delete();
 });
